@@ -1,0 +1,41 @@
+{
+  "name": "toger",
+  "version": "1.0.0",
+  "description": "a tiny logger for node.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc && nyc ava --serial",
+    "test-cov": "tsc && nyc --reporter=html ava --serial",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toomeefed/toger.git"
+  },
+  "keywords": [
+    "logger",
+    "levels",
+    "file",
+    "custom"
+  ],
+  "author": "楼教主 <fe.52cik@gmail.com> (http://www.52cik.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toomeefed/toger/issues"
+  },
+  "homepage": "https://github.com/toomeefed/toger#readme",
+  "devDependencies": {
+    "@types/node": "^10.3.4",
+    "ava": "^0.25.0",
+    "coveralls": "^3.0.1",
+    "delay": "^3.0.0",
+    "nyc": "^12.0.2",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  },
+  "engines": {
+		"node": ">=8.6.0"
+	}
+}
