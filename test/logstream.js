@@ -112,3 +112,18 @@ test.serial('LogStream write: {}', async (t) => {
   t.is(readFile('info'), '');
   t.is(readFile('error'), '');
 });
+
+test.serial.cb('LogStream error', (t) => {
+  const stream = new LogStream({
+    level: -1,
+    levels: ['info', 'error'],
+    dir: 'mylog',
+    cache: 0,
+    error(err) {
+      t.is(err.message, 'ENOENT: no such file or directory, open \'mylog/info.log\'');
+      t.end();
+    }
+  });
+  stream.write({}, { level: 'info' });
+  stream.close();
+});
