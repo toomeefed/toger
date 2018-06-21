@@ -1,8 +1,10 @@
 import Logger from './logger';
-import { IOptions } from './types';
+import { IOptions, ILogFn, LOGLEVELS } from './types';
 
-export function logger(options?: IOptions): Logger {
+export function toger<T extends string, U = { [K in T]: ILogFn }>(options: { levels: T[] } & IOptions): U;
+export function toger<U = { [K in LOGLEVELS]: ILogFn }>(options?: IOptions): U;
+export function toger(options?: IOptions) {
   return new Logger(options);
 }
 
-export default logger;
+export default toger;

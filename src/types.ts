@@ -50,4 +50,40 @@ export type StreamOptions = Required<
 /**
  * 日志方法
  */
-export type LogFn = (data?: object, ...args: any[]) => void;
+export interface ILogFn {
+  /**
+   * 输出日志
+   * (第二个参数开始，继承自 util.format 格式)
+   *
+   * ```js
+   * const logger = toger({ json: true });
+   * logger.info({ hello: 'world' }, 'haha');
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha","hello":"world"}
+   * logger.info({ hello: 'world' }, 'haha', { hello: 'world' });
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha { hello: 'world' }","hello":"world"}
+   * logger.info({ hello: 'world' }, 'haha %j', { hello: 'world' });
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha {\"hello\":\"world\"}","hello":"world"}
+   * ```
+   */
+  (data: object, ...args: any[]): void;
+  /**
+   * 输出日志
+   * (参数继承自 util.format 格式)
+   *
+   * ```js
+   * const logger = toger();
+   * logger.info('haha');
+   * // [2018-06-01 10:00:00] INFO haha
+   * logger.warn('haha', { str: 'str' });
+   * // [2018-06-01 10:00:00] WARN haha { str: 'str' }
+   * logger.error('haha', { str: 'str' });
+   * // [2018-06-01 10:00:00] ERROR haha {"str":"str"}
+   * ```
+   */
+  (...args: any[]): void;
+}
+
+/**
+ * 默认日志级别
+ */
+export type LOGLEVELS = 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal';

@@ -2,7 +2,7 @@ import { EOL } from 'os';
 import { format } from 'util';
 import LogStream from './logstream';
 import { now, noop, getStdio } from './utils';
-import { IOptions, LogFn } from './types';
+import { IOptions, ILogFn } from './types';
 
 class Logger {
   /**
@@ -68,7 +68,7 @@ class Logger {
     });
   }
 
-  private printType(level: string): LogFn {
+  private printType(level: string): ILogFn {
     const LEVEL = level.toUpperCase();
     if (this.level > this.options.levels.indexOf(level)) {
       return noop;
@@ -90,7 +90,7 @@ class Logger {
             data ? ` - ${JSON.stringify(data)}` : ''
           }${EOL}`;
 
-    return (data, ...args) => {
+    return (data?: object, ...args: any[]): void => {
       let message;
       if (typeof data === 'object' && data !== null) {
         message = makeData(format.call(null, ...args), data);
