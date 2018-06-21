@@ -131,22 +131,22 @@ logger.redis('redis 日志');
 
 #### options 
 
-| 参数 | 类型 | 可选 | 描述 |
-| :-- | :-- | :--: | :-- |
-| level | string | 是 | 输出级别 |
-| levels | string[] | 是 | 日志级别 |
-| json | boolean | 是 | 输出JSON格式 |
-| stamp | boolean | 是 | 日期输出为时间戳 |
-| stream | boolean/object | 是 | 输出到文件 |
+| 参数 | 类型 | 可选 | 默认值 | 描述 |
+| :-- | :-- | :--: | :-- | :-- |
+| level | string | 是 | 'all' | 输出级别，all全部输出，off关闭日志 |
+| levels | string[] | 是 | ['trace', 'debug', 'info', 'warn', 'error', 'fatal'] | 日志级别 |
+| json | boolean | 是 | false | 输出JSON格式 |
+| stamp | boolean | 是 | false | 日期输出为时间戳 |
+| stream | boolean/object | 是 | null | 输出到文件，设为 true 使用默认配置 |
 
 #### options.stream 
 
-| 参数 | 类型 | 可选 | 描述 |
-| :-- | :-- | :--: | :-- |
-| dir | string | 是 | 日志目录 |
-| filename | string | 是 | 文件名 |
-| cache | number | 是 | 缓存刷新时间 0是关闭 |
-| mode | number | 是 | linux 文件模式 默认 0o666 |
+| 参数 | 类型 | 可选 | 默认值 | 描述 |
+| :-- | :-- | :--: | :-- | :-- |
+| dir | string | 是 | 'logs' | 日志目录 |
+| filename | string | 是 | '{level}.log' | 文件名 |
+| cache | number | 是 | 1000 | 缓存刷新时间 0是关闭 |
+| mode | number | 是 | 0o666 | linux 文件模式  |
 
 
 ## License
