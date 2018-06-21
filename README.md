@@ -146,7 +146,8 @@ logger.redis('redis 日志');
 | dir | string | 是 | 'logs' | 日志目录 |
 | filename | string | 是 | '{level}.log' | 文件名 |
 | cache | number | 是 | 1000 | 缓存刷新时间 0是关闭 |
-| mode | number | 是 | 0o666 | linux 文件模式  |
+| mode | number | 是 | 0o666 | linux 文件模式 |
+| error | function | 是 | function(){} | 文件错误回调事件 |
 
 
 ## License
