@@ -1,6 +1,7 @@
 import { createWriteStream, WriteStream } from 'fs';
 import { join } from 'path';
 import { IStreamOptions, StreamOptions } from './types';
+import { noop } from './utils';
 
 /**
  * 统一写入流操作
@@ -50,6 +51,7 @@ class LogStream {
         filename: '{level}.log', // 文件名
         cache: 1000, // 缓存
         mode: 0o666, // linux 文件模式
+        error: noop, // 错误处理句柄
       },
       options,
     );
@@ -79,6 +81,7 @@ class LogStream {
 
       const name = filename.replace(/{level}/, levelName);
       const stream = createWriteStream(join(dir, name), { flags: 'a', mode });
+      stream.on('error', this.options.error);
       this.streams.set(levelName, stream);
     });
 

@@ -15,6 +15,10 @@ export interface IStreamOptions {
    * linux 文件模式
    */
   mode?: number;
+  /**
+   * 错误处理事件
+   */
+  error?: (error: Error) => void;
 }
 
 export interface IOptions {
