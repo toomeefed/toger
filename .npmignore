@@ -13,3 +13,6 @@ README.zh-CN.md
 rollup.config.js
 yarn.lock
 CNAME
+
+tsconfig.json
+tslint.json
