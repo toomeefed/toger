@@ -76,7 +76,7 @@ export interface ILogFn {
    * // [2018-06-01 10:00:00] INFO haha
    * logger.warn('haha', { str: 'str' });
    * // [2018-06-01 10:00:00] WARN haha { str: 'str' }
-   * logger.error('haha', { str: 'str' });
+   * logger.error('haha %j', { str: 'str' });
    * // [2018-06-01 10:00:00] ERROR haha {"str":"str"}
    * ```
    */
