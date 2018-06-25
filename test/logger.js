@@ -58,7 +58,7 @@ test.serial('Logger json', (t) => {
   logger.options.levels.forEach((name) => {
     hook((data, { level }) => {
       t.is(level, name);
-      t.regex(data, new RegExp(`^\\{"time":"\\d{4}-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d","level":"${name.toUpperCase()}","message":"test"\\}\n$`));
+      t.regex(data, new RegExp(`^\\{"time":"\\d{4}-\\d\\d-\\d\\d \\d\\d:\\d\\d:\\d\\d","level":"${name.toUpperCase()}","msg":"test"\\}\n$`));
     });
     logger[name]('test');
   });
@@ -70,7 +70,7 @@ test.serial('Logger json stamp', (t) => {
   logger.options.levels.forEach((name) => {
     hook((data, { level }) => {
       t.is(level, name);
-      t.regex(data, new RegExp(`^\\{"time":\\d{13},"level":"${name.toUpperCase()}","message":"test"\\}\n$`));
+      t.regex(data, new RegExp(`^\\{"time":\\d{13},"level":"${name.toUpperCase()}","msg":"test"\\}\n$`));
     });
     logger[name]('test');
   });

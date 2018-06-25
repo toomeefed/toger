@@ -81,12 +81,12 @@ class Logger {
 
     // 日志输出格式控制
     const makeData = this.options.json
-      ? (message: string, data?: object): string =>
+      ? (msg: string, data?: object): string =>
           JSON.stringify(
-            Object.assign({ time: time(), level: LEVEL, message }, data),
+            Object.assign({ time: time(), level: LEVEL, msg }, data),
           ) + EOL
-      : (message: string, data?: object): string =>
-          `[${time()}] ${LEVEL} ${message}${
+      : (msg: string, data?: object): string =>
+          `[${time()}] ${LEVEL} ${msg}${
             data ? ` - ${JSON.stringify(data)}` : ''
           }${EOL}`;
 
