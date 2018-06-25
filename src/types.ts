@@ -62,11 +62,11 @@ export interface ILogFn {
    * ```js
    * const logger = toger({ json: true });
    * logger.info({ hello: 'world' }, 'haha');
-   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha","hello":"world"}
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","msg":"haha","hello":"world"}
    * logger.info({ hello: 'world' }, 'haha', { hello: 'world' });
-   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha { hello: 'world' }","hello":"world"}
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","msg":"haha { hello: 'world' }","hello":"world"}
    * logger.info({ hello: 'world' }, 'haha %j', { hello: 'world' });
-   * // {"time":"2018-06-01 10:00:00","level":"INFO","message":"haha {\"hello\":\"world\"}","hello":"world"}
+   * // {"time":"2018-06-01 10:00:00","level":"INFO","msg":"haha {\"hello\":\"world\"}","hello":"world"}
    * ```
    */
   (data: object, ...args: any[]): void;

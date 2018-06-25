@@ -91,13 +91,13 @@ class Logger {
           }${EOL}`;
 
     return (data?: object, ...args: any[]): void => {
-      let message;
+      let msg;
       if (typeof data === 'object' && data !== null) {
-        message = makeData(format.call(null, ...args), data);
+        msg = makeData(format.call(null, ...args), data);
       } else {
-        message = makeData(format.call(null, data, ...args));
+        msg = makeData(format.call(null, data, ...args));
       }
-      (stream as any).write(message, { level } as any);
+      (stream as any).write(msg, { level } as any);
     };
   }
 }
