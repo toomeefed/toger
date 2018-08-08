@@ -56,10 +56,10 @@ class Logger {
     }
 
     if (stream) {
-      const opts = Object.assign({}, this.options, stream, { level: this.level });
+      const opts = Object.assign({}, this.options, stream, {
+        level: this.level,
+      });
       this.stream = new LogStream(opts);
-    } else {
-      this.stream = getStdio(level);
     }
 
     const self = this as any;
@@ -74,7 +74,8 @@ class Logger {
       return noop;
     }
 
-    const { stream } = this;
+    // 如果没有配置输出文件，则输出到对应类型的标准流中
+    const stream = this.stream || getStdio(level);
 
     // 时间格式控制
     const time = () => (this.options.stamp ? now() : now('datetime'));
